@@ -1,0 +1,68 @@
+<% include _header %>
+    <%if (alert!=0) {%>
+        <div id="Alert" class="alert <%= color %>">
+            <%= alert %>
+                <a id="close" href="#" class="close" data-dismiss="alert">&times;</a>
+        </div>
+        <%;}%>
+            <h1>
+                <%= title %>
+            </h1>
+            <p>Esta vista es de la página principal</p>
+            <h2>Lista de zombies</h2>
+            <table class="table table-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Tipo</th>
+                    <th>Acciones</th>
+                </tr>
+                <%
+      if(coleccion)
+      {
+        coleccion.forEach(function(zombie)
+        {%>
+                    <tr>
+                        <td>
+                            <%= zombie.name %>
+                        </td>
+                        <td>
+                            <%= zombie.email %>
+                        </td>
+                        <td>
+                            <%= zombie.type %>
+                        </td>
+                        <td>
+                            <a href="/zombies/edit/<%= zombie.id %>">
+                                <i class="fas fa-edit" title="Editar"></i>
+                            </a>
+                            <a href="/zombies/delete/<%= zombie.id %>">
+                                <i class="fas fa-trash text-danger" title="Eliminar"></i>
+                            </a>
+
+                        </td>
+                    </tr>
+                    <%
+          }); } 
+          
+          %>
+
+            </table>
+
+            <a href="/zombies/add" class="btn btn-primary">
+                Agregar Zombie<i class="fas fa-plus text-light"></i>
+            </a>
+
+            <script src="/jquery/jquery.min.js"></script>
+            <script src="/js/bootstrap.min.js"></script>
+
+            <%if (alert!=0) {
+                %>
+                <script type="text/javascript">
+                    $('#close').click(function() {
+                        $('#Alert').hide('fade');
+                    })
+                </script>
+                <%;}%>
+
+                    <% include _footer %>

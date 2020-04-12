@@ -1,0 +1,45 @@
+<% include _header %>
+    <%if (alert!=0) {
+        alert.forEach(function(alert){%>
+        <div id="Alert <%= alert.id %>" class="alert <%= color %>">
+            <%= alert.mensaje %>
+                <a id="close <%= alert.id %>" href="#" class="close" data-dismiss="alert">&times;</a>
+        </div>
+        <%});}%>
+            <div class="row container">
+                <div class="col-md-12">
+                    <form action="new" method="post">
+                        <div class="form-group">
+                            <label for="">Sabor</label>
+                            <input type="text" class="form-control" name="flavor">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Descripcion</label>
+                            <input type="text" class="form-control" name="description">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Precio</label>
+                            <input type="text" class="form-control" name="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Imagen</label>
+                            <input type="text" class="form-control" name="picture">
+                        </div>
+                        <button class="btn btn-primary">Agregar Cerebro<i class="fas fa-plus text-light"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <script src="/jquery/jquery.min.js"></script>
+            <script src="/js/bootstrap.min.js"></script>
+
+            <%if (alert!=0) {
+                alert.forEach(function(alert){%>
+                <script type="text/javascript">
+                    $('#close <%= alert.id %>').click(function() {
+                        $('#Alert <%= alert.id %>').hide('fade');
+                    })
+                </script>
+                <%});}%>
+
+                    <% include _footer %>

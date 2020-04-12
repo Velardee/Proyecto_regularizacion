@@ -1,0 +1,68 @@
+<% include _header %>
+    <%if (alert!=0) {%>
+        <div id="Alert" class="alert <%= color %>">
+            <%= alert %>
+                <a id="close" href="#" class="close" data-dismiss="alert">&times;</a>
+        </div>
+        <%;}%>
+            <h1>
+                <%= title %>
+            </h1>
+            <p>Esta vista es de la página de cerebros</p>
+            <h2>Lista de Cerebros</h2>
+            <table class="table table-dark">
+                <tr>
+                    <th>Flavor</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Picture</th>
+                    <th>Acciones</th>
+                    <th></th>
+                </tr>
+                <%
+  if(coleccion)
+  {
+    coleccion.forEach(function(cerebro)
+    {%>
+                    <tr>
+                        <td>
+                            <%= cerebro.flavor %>
+                        </td>
+                        <td>
+                            <%= cerebro.description %>
+                        </td>
+                        <td>
+                            <%= cerebro.price %>
+                        </td>
+                        <td>
+                            <%= cerebro.picture %>
+                        </td>
+                        <td>
+                            <a href="/cerebros/edit/<%= cerebro.id %>">
+                                <i class="fas fa-edit" title="Editar"></i>
+                            </a>
+                            <a href="/cerebros/delete/<%= cerebro.id %>">
+                                <i class="fas fa-trash text-danger" title="Eliminar"></i>
+                            </a>
+
+                        </td>
+                    </tr>
+                    <%}); } %>
+
+            </table>
+
+            <a href="/cerebros/add" class="btn btn-primary">
+                Agregar Cerebro<i class="fas fa-plus text-light"></i>
+            </a>
+            <script src="/jquery/jquery.min.js"></script>
+            <script src="/js/bootstrap.min.js"></script>
+
+            <%if (alert!=0) {%>
+                <script type="text/javascript">
+                    $('#close').click(function() {
+                        $('#Alert').hide('fade');
+                    })
+                </script>
+                <%;}%>
+
+                    <% include _footer %>

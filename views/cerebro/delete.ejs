@@ -1,0 +1,30 @@
+<% include _header %>
+    <div class="row container">
+        <div class="col-md-12">
+            <form action="/cerebros/delete/<%= cerebro.id %>?_method=DELETE" method="post">
+                <div class="form-group">
+                    <label for="">Sabor</label>
+                    <input type="text" class="form-control" name="flavor" value="<%= cerebro.flavor %>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="">Descripcion</label>
+                    <input type="text" class="form-control" name="description" value="<%= cerebro.description %>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="">Precio</label>
+                    <input type="text" class="form-control" name="price" value="<%= cerebro.price %>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="">Imagen</label>
+                    <input type="text" class="form-control" name="picture" value="<%= cerebro.picture %>" disabled>
+                </div>
+                <button class="btn btn-danger">Eliminar Cerebro <i class="fas fa-trash text-light"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+
+    <% include _footer %>

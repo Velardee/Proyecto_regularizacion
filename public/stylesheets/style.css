@@ -1,0 +1,23 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+td i {
+    margin: 4px;
+    cursor: pointer;
+}
+
+a i {
+    margin-left: 6px;
+    cursor: pointer;
+}
+
+button i {
+    margin-left: 6px;
+    cursor: pointer;
+}

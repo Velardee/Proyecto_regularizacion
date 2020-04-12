@@ -1,0 +1,41 @@
+<% include _header %>
+    <%if (alert!=0) {
+    alert.forEach(function(alert){%>
+        <div id="Alert <%= alert.id %>" class="alert <%= color %>">
+            <%= alert.mensaje %>
+                <a id="close <%= alert.id %>" href="#" class="close" data-dismiss="alert">&times;</a>
+        </div>
+        <%});}%>
+            <div class="row container">
+                <div class="col-md-12">
+                    <form action="/zombies/edit/<%= zombie.id %>?_method=PUT" method="post">
+                        <div class="form-group">
+                            <label for="">Nombre</label>
+                            <input type="text" class="form-control" name="name" value="<%= zombie.name %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="text" class="form-control" name="email" value="<%= zombie.email %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Tipo</label>
+                            <input type="text" class="form-control" name="type" value="<%= zombie.type %>">
+                        </div>
+                        <button class="btn btn-primary">Editar Zombie<i class="fas fa-edit text-light"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <script src="/jquery/jquery.min.js"></script>
+            <script src="/js/bootstrap.min.js"></script>
+
+            <%if (alert!=0) {
+                alert.forEach(function(alert){%>
+                <script type="text/javascript">
+                    $('#close <%= alert.id %>').click(function() {
+                        $('#Alert <%= alert.id %>').hide('fade');
+                    })
+                </script>
+                <%});}%>
+
+                    <% include _footer %>
